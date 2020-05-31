@@ -7,7 +7,7 @@ const forecast = require('./utils/forecast')
 
 
 const app = express()
-
+const port = proces.env.PORT || 3000
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -23,9 +23,7 @@ hbs.registerPartials(partialPath)
 app.use(express.static(publicDirectoryPath))
 
 
-app.listen(3000, () => {
-    console.log('server running @3000 port')
-});
+
 
 
 app.get('', (req, res) => {
@@ -104,3 +102,6 @@ app.get('*', (req, res) => {
     res.render('404', { message: 'PAGE NOT FOUND!' })
 })
 
+app.listen(port, () => {
+    console.log('server running in port, ' +  port)
+});
